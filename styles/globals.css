@@ -120,3 +120,99 @@ textarea:focus {
 .submitButton:hover {
   background: #1d4ed8;
 }
+.page {
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.hero {
+  padding: 110px 70px;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
+}
+
+.hero .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.14);
+  padding: 10px 16px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 76px;
+  margin: 0 0 24px;
+}
+
+.subtitle {
+  font-size: 22px;
+  max-width: 760px;
+  line-height: 1.6;
+  color: #dbeafe;
+}
+
+.buttons {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+}
+
+.primary,
+.secondary {
+  display: inline-block;
+  padding: 16px 26px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.primary {
+  background: white;
+  color: #0f172a;
+}
+
+.secondary {
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white;
+}
+
+.section {
+  padding: 80px 70px;
+}
+
+.section h2 {
+  font-size: 42px;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+
+.card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.disclaimer {
+  margin: 40px 70px;
+  padding: 36px;
+  background: white;
+  border-radius: 22px;
+  border-left: 6px solid #2563eb;
+}
+
+footer {
+  padding: 40px;
+  text-align: center;
+  color: #6b7280;
+}
