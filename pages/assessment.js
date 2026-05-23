@@ -1,154 +1,76 @@
-import { useState } from "react";
-
 export default function Assessment() {
-  const [nationality, setNationality] = useState("");
-  const [location, setLocation] = useState("");
-  const [experience, setExperience] = useState("");
-  const [evidence, setEvidence] = useState("");
-
-  const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState("");
-
-  async function generateAssessment() {
-    setLoading(true);
-    setResult("");
-
-    try {
-      const response = await fetch("/api/assess", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nationality,
-          location,
-          experience,
-          evidence,
-        }),
-      });
-
-      const data = await response.json();
-
-      setResult(data.result);
-    } catch (error) {
-      setResult("Something went wrong.");
-    }
-
-    setLoading(false);
-  }
-
   return (
-    <main className="assessmentPage">
-      <a className="backLink" href="/">
-        ← LexVisa AI
-      </a>
+    <main className="container">
+      <h1>Global Talent Assessment</h1>
+      <p className="subtitle">
+        AI-powered UK Global Talent visa evaluation
+      </p>
 
-      <section className="assessmentHero">
-        <span className="badgeDark">Global Talent Visa</span>
+      <div className="grid">
 
-        <h1>Global Talent Assessment</h1>
-
-        <p>
-          Complete the intake form to generate an AI-assisted route
-          assessment, evidence map, risk flags and draft document structures.
-        </p>
-      </section>
-
-      <div className="assessmentCard">
-        <div className="formGrid">
-          <label>
-            Nationality
-            <input
-              value={nationality}
-              onChange={(e) => setNationality(e.target.value)}
-              placeholder="e.g. Romanian"
-            />
-          </label>
-
-          <label>
-            Current location
-            <input
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              placeholder="e.g. London"
-            />
-          </label>
+        <div>
+          <label>Nationality</label>
+          <input placeholder="e.g. Romanian" />
         </div>
 
-        <label>
-          Professional experience
-          <textarea
-            value={experience}
-            onChange={(e) => setExperience(e.target.value)}
-            placeholder="Describe professional experience..."
-          />
-        </label>
+        <div>
+          <label>Current location</label>
+          <input placeholder="e.g. London" />
+        </div>
 
-        <label>
-          Evidence available
-          <textarea
-            value={evidence}
-            onChange={(e) => setEvidence(e.target.value)}
-            placeholder="CV, media, recommendation letters..."
-          />
-        </label>
+        <div>
+          <label>Professional experience</label>
+          <textarea placeholder="Describe career background..." />
+        </div>
 
-        <button
-          className="submitButton"
-          onClick={generateAssessment}
-        >
-          {loading ? "Generating..." : "Generate assessment"}
-        </button>
+        <div>
+          <label>Key achievements</label>
+          <textarea placeholder="Major achievements and impact..." />
+        </div>
 
-        {result && (
-          <div className="resultBox">
-            <h2>Assessment Result</h2>
+        <div>
+          <label>Awards</label>
+          <textarea placeholder="Industry awards and recognition..." />
+        </div>
 
-            <pre>{result}</pre>
-          </div>
-        )}
+        <div>
+          <label>Publications</label>
+          <textarea placeholder="Articles, journals, media..." />
+        </div>
+
+        <div>
+          <label>Speaking engagements</label>
+          <textarea placeholder="Conferences, webinars..." />
+        </div>
+
+        <div>
+          <label>Leadership evidence</label>
+          <textarea placeholder="Leadership and mentoring..." />
+        </div>
+
+        <div>
+          <label>Innovation evidence</label>
+          <textarea placeholder="Products, patents, systems..." />
+        </div>
+
+        <div>
+          <label>Commercial impact</label>
+          <textarea placeholder="Revenue, growth, users..." />
+        </div>
+
+        <div>
+          <label>Evidence available</label>
+          <textarea placeholder="CV, media, contracts..." />
+        </div>
+
+        <div>
+          <label>Weaknesses or concerns</label>
+          <textarea placeholder="Potential weaknesses..." />
+        </div>
+
       </div>
+
+      <button>Generate assessment</button>
     </main>
   );
 }
-<div className="grid">
-  <div>
-    <label>Awards</label>
-    <textarea placeholder="Industry awards, recognition..." />
-  </div>
-
-  <div>
-    <label>Publications</label>
-    <textarea placeholder="Articles, media, journals..." />
-  </div>
-
-  <div>
-    <label>Speaking engagements</label>
-    <textarea placeholder="Conferences, podcasts, webinars..." />
-  </div>
-
-  <div>
-    <label>Leadership evidence</label>
-    <textarea placeholder="Teams led, initiatives, impact..." />
-  </div>
-
-  <div>
-    <label>Innovation evidence</label>
-    <textarea placeholder="Products, patents, AI, systems..." />
-  </div>
-
-  <div>
-    <label>Commercial impact</label>
-    <textarea placeholder="Revenue, growth, users, clients..." />
-  </div>
-
-  <div>
-    <label>Recommendation letters</label>
-    <textarea placeholder="Who can recommend you?" />
-  </div>
-
-  <div>
-    <label>Weaknesses or concerns</label>
-    <textarea placeholder="Gaps in evidence..." />
-  </div>
-</div>
