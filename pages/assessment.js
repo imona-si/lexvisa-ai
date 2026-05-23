@@ -111,3 +111,44 @@ export default function Assessment() {
     </main>
   );
 }
+<div className="grid">
+  <div>
+    <label>Awards</label>
+    <textarea placeholder="Industry awards, recognition..." />
+  </div>
+
+  <div>
+    <label>Publications</label>
+    <textarea placeholder="Articles, media, journals..." />
+  </div>
+
+  <div>
+    <label>Speaking engagements</label>
+    <textarea placeholder="Conferences, podcasts, webinars..." />
+  </div>
+
+  <div>
+    <label>Leadership evidence</label>
+    <textarea placeholder="Teams led, initiatives, impact..." />
+  </div>
+
+  <div>
+    <label>Innovation evidence</label>
+    <textarea placeholder="Products, patents, AI, systems..." />
+  </div>
+
+  <div>
+    <label>Commercial impact</label>
+    <textarea placeholder="Revenue, growth, users, clients..." />
+  </div>
+
+  <div>
+    <label>Recommendation letters</label>
+    <textarea placeholder="Who can recommend you?" />
+  </div>
+
+  <div>
+    <label>Weaknesses or concerns</label>
+    <textarea placeholder="Gaps in evidence..." />
+  </div>
+</div>
