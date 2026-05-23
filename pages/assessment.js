@@ -1,109 +1,113 @@
 import { useState } from "react";
 
 export default function Assessment() {
+  const [nationality, setNationality] = useState("");
+  const [location, setLocation] = useState("");
+  const [experience, setExperience] = useState("");
+  const [evidence, setEvidence] = useState("");
+
+  const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
 
-  function generateAssessment() {
-    setResult(`
-Global Talent Assessment Result
+  async function generateAssessment() {
+    setLoading(true);
+    setResult("");
 
-Recommended Route:
-Exceptional Promise
+    try {
+      const response = await fetch("/api/assess", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nationality,
+          location,
+          experience,
+          evidence,
+        }),
+      });
 
-Strengths:
-• Strong legal and immigration background
-• Experience in AI and LegalTech
-• International client exposure
-• Evidence of innovation and sector contribution
+      const data = await response.json();
 
-Risks:
-• Limited major media recognition
-• Need stronger public profile
-• More external recommendation evidence needed
+      setResult(data.result);
+    } catch (error) {
+      setResult("Something went wrong.");
+    }
 
-Recommended Next Steps:
-• Publish thought leadership articles
-• Speak at conferences
-• Strengthen LinkedIn visibility
-• Collect additional recommendation letters
-
-Overall Potential:
-High potential for UK Global Talent progression with structured evidence strategy.
-    `);
+    setLoading(false);
   }
 
   return (
     <main className="assessmentPage">
-      <a className="backLink" href="/">← LexVisa AI</a>
+      <a className="backLink" href="/">
+        ← LexVisa AI
+      </a>
 
       <section className="assessmentHero">
         <span className="badgeDark">Global Talent Visa</span>
+
         <h1>Global Talent Assessment</h1>
+
         <p>
-          Complete the intake form to generate an AI-assisted route assessment,
-          evidence map, risk flags and draft document structures.
+          Complete the intake form to generate an AI-assisted route
+          assessment, evidence map, risk flags and draft document structures.
         </p>
       </section>
 
-      <form className="assessmentCard">
+      <div className="assessmentCard">
         <div className="formGrid">
           <label>
             Nationality
-            <input placeholder="e.g. Moldovan" />
+            <input
+              value={nationality}
+              onChange={(e) => setNationality(e.target.value)}
+              placeholder="e.g. Romanian"
+            />
           </label>
 
           <label>
             Current location
-            <input placeholder="e.g. United Kingdom" />
-          </label>
-
-          <label>
-            Field
-            <select>
-              <option>Digital Technology</option>
-            </select>
-          </label>
-
-          <label>
-            Route preference
-            <select>
-              <option>Not sure</option>
-            </select>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="e.g. London"
+            />
           </label>
         </div>
 
         <label>
           Professional experience
-          <textarea placeholder="Experience..." />
+          <textarea
+            value={experience}
+            onChange={(e) => setExperience(e.target.value)}
+            placeholder="Describe professional experience..."
+          />
         </label>
 
         <label>
           Evidence available
-          <textarea placeholder="CV, recommendations..." />
+          <textarea
+            value={evidence}
+            onChange={(e) => setEvidence(e.target.value)}
+            placeholder="CV, media, recommendation letters..."
+          />
         </label>
 
-        <div className="consentBox">
-          <input type="checkbox" />
-          <p>
-            Outputs require review by a qualified immigration professional.
-          </p>
-        </div>
-
         <button
-          type="button"
           className="submitButton"
           onClick={generateAssessment}
         >
-          Generate assessment
+          {loading ? "Generating..." : "Generate assessment"}
         </button>
 
         {result && (
           <div className="resultBox">
             <h2>Assessment Result</h2>
+
             <pre>{result}</pre>
           </div>
         )}
-      </form>
+      </div>
     </main>
   );
 }
