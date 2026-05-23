@@ -1,4 +1,37 @@
+import { useState } from "react";
+
 export default function Assessment() {
+  const [result, setResult] = useState("");
+
+  function generateAssessment() {
+    setResult(`
+Global Talent Assessment Result
+
+Recommended Route:
+Exceptional Promise
+
+Strengths:
+• Strong legal and immigration background
+• Experience in AI and LegalTech
+• International client exposure
+• Evidence of innovation and sector contribution
+
+Risks:
+• Limited major media recognition
+• Need stronger public profile
+• More external recommendation evidence needed
+
+Recommended Next Steps:
+• Publish thought leadership articles
+• Speak at conferences
+• Strengthen LinkedIn visibility
+• Collect additional recommendation letters
+
+Overall Potential:
+High potential for UK Global Talent progression with structured evidence strategy.
+    `);
+  }
+
   return (
     <main className="assessmentPage">
       <a className="backLink" href="/">← LexVisa AI</a>
@@ -28,9 +61,6 @@ export default function Assessment() {
             Field
             <select>
               <option>Digital Technology</option>
-              <option>Academia or Research</option>
-              <option>Arts and Culture</option>
-              <option>Not sure</option>
             </select>
           </label>
 
@@ -38,49 +68,41 @@ export default function Assessment() {
             Route preference
             <select>
               <option>Not sure</option>
-              <option>Exceptional Talent</option>
-              <option>Exceptional Promise</option>
             </select>
           </label>
         </div>
 
         <label>
           Professional experience
-          <textarea placeholder="Years of experience, sector, seniority, achievements..." />
-        </label>
-
-        <label>
-          Current role
-          <textarea placeholder="Current responsibilities, employer, role level..." />
-        </label>
-
-        <label>
-          Key achievements
-          <textarea placeholder="Major achievements, projects, sector impact..." />
+          <textarea placeholder="Experience..." />
         </label>
 
         <label>
           Evidence available
-          <textarea placeholder="CV, recommendation letters, awards, media, contracts..." />
-        </label>
-
-        <label>
-          Weaknesses or concerns
-          <textarea placeholder="Limited media, no awards, previous refusal, weak evidence..." />
+          <textarea placeholder="CV, recommendations..." />
         </label>
 
         <div className="consentBox">
           <input type="checkbox" />
           <p>
-            I understand that LexVisa AI does not provide legal advice or
-            immigration representation. Outputs require review by a qualified
-            immigration professional.
+            Outputs require review by a qualified immigration professional.
           </p>
         </div>
 
-        <button type="button" className="submitButton">
+        <button
+          type="button"
+          className="submitButton"
+          onClick={generateAssessment}
+        >
           Generate assessment
         </button>
+
+        {result && (
+          <div className="resultBox">
+            <h2>Assessment Result</h2>
+            <pre>{result}</pre>
+          </div>
+        )}
       </form>
     </main>
   );
