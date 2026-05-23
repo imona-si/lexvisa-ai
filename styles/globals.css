@@ -216,3 +216,20 @@ footer {
   text-align: center;
   color: #6b7280;
 }
+.resultBox {
+  margin-top: 40px;
+  background: #0f172a;
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.resultBox h2 {
+  margin-top: 0;
+}
+
+.resultBox pre {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: 15px;
+}
