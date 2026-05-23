@@ -233,3 +233,7 @@ footer {
   line-height: 1.7;
   font-size: 15px;
 }
+.grid {
+  display: grid;
+  gap: 24px;
+}
